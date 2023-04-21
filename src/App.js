@@ -1,7 +1,11 @@
+import Navbar from "./Components/Navbar/Navbar";
+
 function App() {
   return (
     <div>
-      <h1>Acá va a estar Don Jacinto.</h1>
+      <Navbar>
+
+      </Navbar>
     </div>
   );
 }

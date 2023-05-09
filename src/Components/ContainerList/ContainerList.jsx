@@ -2,8 +2,26 @@ import CardMenu from "../CardMenu/CardMenu";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Contact from "../Contact/Contact";
+import { menu } from "../../itemMock";
+import { useState, useEffect } from "react";
 
 const ContainerList = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const itemList = new Promise((resolve) => {
+      resolve(menu);
+    });
+
+    itemList
+      .then((res) => {
+        setItems(res);
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  }, []);
+
   return (
     <Box
       sx={{
@@ -15,7 +33,7 @@ const ContainerList = () => {
         borderRadius: "30px 30px 0px 0px",
         display: "flex",
         justifyContent: "space-around",
-        padding: "32px"
+        padding: "32px",
       }}
     >
       <Grid>
@@ -44,7 +62,7 @@ const ContainerList = () => {
           </p>
         </Grid>
         <Grid item>
-          <CardMenu />
+          <CardMenu key={items.id} items={items} />
         </Grid>
         <Grid item>
           <Contact />

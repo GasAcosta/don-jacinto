@@ -1,26 +1,12 @@
-import { menu } from "../../itemMock";
-import { useState, useEffect } from "react";
 import Card from "../Card/Card";
 
-const CardMenu = () => {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    const itemList = new Promise((resolve) => {
-      resolve(menu);
-    });
-
-    itemList
-      .then((res) => {
-        setItems(res);
-      })
-      .catch((res) => {
-        console.log(res);
-      });
-  }, []);
-
+const CardMenu = ({ items }) => {
   return (
-    <Card items={items} />
+    <div>
+      {items.map((element) => {
+        return <Card key={element.id} element={element} />;
+      })}
+    </div>
   );
 };
 

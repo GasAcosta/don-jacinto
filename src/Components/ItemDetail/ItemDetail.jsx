@@ -1,9 +1,12 @@
-import React from 'react'
+import { useParams } from "react-router-dom";
+import { comidaSec } from "../../comidaItemMock";
+import { generalSec } from "../../generalItemMock";
 
 const ItemDetail = () => {
-  return (
-    <div>ItemDetail</div>
-  )
-}
+  const { title } = useParams();
+  const comida = comidaSec.find((element) => element.title === title);
 
-export default ItemDetail
+  return <div>itemdetail</div>;
+};
+
+export default ItemDetail;
